@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import Logo from '../assets/logo2.png'
-import { Link } from 'react-router-dom';
-import { ShoppingCart } from 'lucide-react';
-import { FaRegUser } from "react-icons/fa";
-import { HiMenuAlt1, HiMenuAlt3, } from "react-icons/hi";
-import ResponsiveMenu from './ResponsiveMenu';
-import { UpdateFollower } from 'react-mouse-follower';
-
+import { Link } from 'react-router-dom'
+import { ShoppingCart } from 'lucide-react'
+import { FaRegUser } from "react-icons/fa"
+import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi"
+import ResponsiveMenu from './ResponsiveMenu'
 
 export const NavbarMenu = [
   {
@@ -34,74 +32,50 @@ export const NavbarMenu = [
     title: "Contact",
     link: "/contact",
   },
-];
+]
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
   const toggleMenu = () => {
     setShowMenu(!showMenu)
   }
+
   return (
     <div className='text-white py-8'>
       <div className='container flex justify-between items-center'>
-        {/* logo section */}
+        {}
         <div>
           <img src={Logo} alt="" className='max-w-[100px] invert' />
         </div>
-        {/* menu section */}
+
+        {}
         <div className='hidden md:block'>
           <ul className='flex items-center gap-4 relative z-40'>
-            {NavbarMenu.map((item, index) => (
-              <li key={index}>
-                <UpdateFollower
-                mouseOptions={{
-                  backgroundColor: "white",
-                  zIndex: 9999,
-                  followSpeed: 1.5,
-                  scale:5,
-                  mixBlendMode: "difference"
-                }}
-                >
-                <Link to={item.link} className='inline-block text-base font-semibold py-2 px-3 uppercase'>
+            {NavbarMenu.map((item) => (
+              <li key={item.id}>
+                <Link to={item.link} className='inline-block text-base font-semibold py-2 px-3 uppercase cursor-pointer'>
                   {item.title}
                 </Link>
-                </UpdateFollower>
               </li>
             ))}
-            <UpdateFollower 
-             mouseOptions={{
-              backgroundColor: "white",
-              zIndex: 9999,
-              followSpeed: 1.5,
-              scale:5,
-              mixBlendMode: "difference"
-            }}
-            >
-            <Link to='/cart'>
-              <button className='text-xl ps-14'>
-                <ShoppingCart />
+            <li>
+              <Link to='/cart' className='cursor-pointer'>
+                <button className='text-xl ps-14 cursor-pointer'>
+                  <ShoppingCart />
+                </button>
+              </Link>
+            </li>
+            <li>
+              <button className='text-xl ps-8 cursor-pointer'>
+                <FaRegUser />
               </button>
-            </Link>
-            </UpdateFollower>
-            <UpdateFollower
-             mouseOptions={{
-              backgroundColor: "white",
-              zIndex: 9999,
-              followSpeed: 1.5,
-              scale:5,
-              mixBlendMode: "difference"
-            }}
-            >
-            <button className='text-xl ps-8'>
-              <FaRegUser />
-            </button>
-            </UpdateFollower>
-
+            </li>
           </ul>
         </div>
+
         <div className='flex gap-8 md:hidden z-50'>
-          <Link to={'/cart'}><ShoppingCart /></Link>
-          {/* mobile hamburger menu */}
+          <Link to={'/cart'} className='cursor-pointer'><ShoppingCart /></Link>
+          {}
           {
             showMenu ? (
               <HiMenuAlt1 onClick={toggleMenu} className='cursor-pointer transition-all md:hidden z-50' size={30} />
