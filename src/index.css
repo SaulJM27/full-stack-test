@@ -83,6 +83,13 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
+  
+  @media (min-width: 768px) {
+    body, a, button, input, select {
+      cursor: none !important;
+    }
+  }
+
   html {
     @apply scroll-smooth;
   }
@@ -99,6 +106,48 @@
 }
 
 @layer components {
+ 
+  .custom-cursor-core {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #facc15;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 0px !important;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: transform 0.1s ease-out, background-color 0.2s ease;
+  }
+
+  .custom-cursor-frame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid #138695; 
+    border-radius: 0px !important;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease-out, height 0.2s ease-out, transform 0.15s ease-out, border-color 0.2s ease;
+  }
+
+  .cursor-hover .custom-cursor-core {
+    background-color: #ffffff;
+    transform: translate(-50%, -50%) scale(1.4) rotate(90deg);
+  }
+
+  .cursor-hover .custom-cursor-frame {
+    width: 36px;
+    height: 36px;
+    border-color: #facc15;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+
   .glass-card {
     @apply bg-gray-900/30 backdrop-blur-md border border-white/10 shadow-lg;
   }
@@ -183,7 +232,7 @@
     100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
   }
 
-  /* Vortex background enhancements */
+
   .vortex-overlay {
     @apply fixed inset-0 pointer-events-none;
     background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
@@ -197,7 +246,7 @@
     text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
   }
 
-  /* AI-themed styles */
+  
   .ai-gradient {
     @apply bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
   }
@@ -246,7 +295,7 @@
     @apply border border-white/10 hover:border-blue-500/50 transition-colors duration-300;
   }
 
-  /* Enhanced project card shadow effects */
+
   .project-card-shadow {
     @apply relative overflow-hidden;
   }
@@ -271,7 +320,7 @@
     @apply opacity-20 scale-100;
   }
 
-  /* Additional glow for project cards */
+
   .project-glow {
     @apply relative;
   }
@@ -286,7 +335,7 @@
     @apply opacity-20;
   }
 
-  /* Simple and visible project card shadow */
+  
   .project-card-hover {
     @apply transition-all duration-300;
   }
@@ -296,7 +345,7 @@
     transform: translateY(-5px);
   }
 
-  /* Direct shadow effect */
+  
   .card-shadow-effect {
     position: relative;
   }
@@ -316,7 +365,7 @@
     opacity: 0.10;
   }
 
-  /* Input border shadow effect for contact form fields */
+  
   .input-shadow-effect {
     position: relative;
     z-index: 0;
@@ -337,7 +386,7 @@
     opacity: 0.15;
   }
 
-  /* Gradient Highlight for Project Descriptions */
+  
   .gradient-highlight {
     background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
     background-clip: text;
